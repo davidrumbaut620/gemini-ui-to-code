@@ -2,9 +2,14 @@ import streamlit as st
 import pathlib
 from PIL import Image
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
 
-# Configure the API key directly in the script
-API_KEY = 'YOUR KEY'
+# Load environment variables from .env file
+load_dotenv()
+API_KEY = os.getenv('GEMINI_API_KEY')
+
+# Configure the API key
 genai.configure(api_key=API_KEY)
 
 # Generation configuration
@@ -52,7 +57,7 @@ def send_message_to_model(message, image_path):
 # Streamlit app
 def main():
     st.title("Gemini 1.5 Pro, UI to Code 👨‍💻 ")
-    st.subheader('Made with ❤️ by [Skirano](https://x.com/skirano)')
+    st.subheader('Made with ❤️ by [Davidrt](https://davidrt.xyz)')
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
